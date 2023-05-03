@@ -1,0 +1,584 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,800&display=swap');
+@import url('https://fonts.cdnfonts.com/css/common-pixel');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: 'Poppins', sans-serif;
+    color: black;
+}
+
+.layerfind-game--section {
+    height: 100vh;
+    background-color: #252525;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.layerfind--gameSpace {
+    height: 60rem;
+    width: 50rem;
+    border-radius: 8px;
+
+    background-color: #149445;
+    display: grid;
+    grid-template-rows: 8rem 1fr;
+    /* overflow: hiddftakeen; */
+    padding: 1rem 1rem;
+
+    position: relative;
+}
+
+
+.layers {
+    display: grid;
+    grid-template-rows: repeat(7, 1fr);
+    /* padding: 1rem 1rem; */
+
+    position: relative;
+    margin-top: 2rem;
+
+}
+
+.layer {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 5px;
+    padding: 4px 0rem;
+    opacity: 0.7;
+    align-items: center;
+
+    border-radius: 4px;
+    font-size: 1.2rem;
+
+    z-index: 1;
+}
+
+.revealer {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform-style: preserve-3d;
+    transition: transform 0.4s linear;
+
+    pointer-events: none;
+}
+
+.wood-img {
+    width: 100%;
+    height: auto;
+    z-index: 10;
+    backface-visibility: hidden;
+}
+
+.banana {
+    /* width: 100%; */
+    height: 100%;
+    transform: rotateY(180deg);
+
+    position: absolute;
+    z-index: -1;
+    backface-visibility: hidden;
+}
+
+
+.bomb {
+    height: 100%;
+    transform: rotateY(180deg);
+
+    position: absolute;
+    z-index: -1;
+    backface-visibility: hidden;
+}
+
+.cash--incr--noter {
+    align-self: center;
+    justify-self: center;
+}
+
+.cash--incr--noter::selection {
+    color: none;
+    background: none;
+}
+
+.layer--active {
+    opacity: 1;
+}
+
+.layer--active .revealer {
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.layer--active.layer .cash--incr--noter {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #f5f5f5;
+}
+
+.highlighter {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+
+    background-color: #005721;
+    /* background-color: #f5f5f5; */
+    border-radius: 4px;
+
+    transition: all 0.3s linear;
+    z-index: 0;
+}
+
+.game--details {
+    position: absolute;
+    top: 2%;
+    left: 0%;
+    transform: translateY(0%) translateX(-100%);
+
+    border-radius: 4px;
+    /* width: 100%; */
+    padding: 0px 1rem;
+
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.cash-avbl--container,
+.bet-amount--container,
+.current-winnings--container {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: #f5f5f5;
+    padding: 0.62rem 1.2rem 0.62rem 2rem;
+    background-color: #005721;
+    /* background-color: #005721; */
+    border-radius: 3rem;
+}
+
+.game--details .icon {
+    height: 2rem;
+    width: auto;
+    margin-bottom: 2px;
+}
+
+
+.winning--heading {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+
+.setBetcard--closeButton {
+    position: absolute;
+    font-size: 1.7rem;
+    transform: translate(135px, -85px);
+    cursor: pointer;
+}
+
+.setBetcard {
+    position: absolute;
+
+    width: 30rem;
+    height: 20rem;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* gap: 3rem; */
+
+    z-index: 100;
+    padding: 1.4rem;
+
+    display: none;
+}
+
+
+@keyframes closethe_betcard {
+    0% {
+        scale: 1;
+        opacity: 1;
+    }
+
+    100% {
+        scale: 0;
+        opacity: 0;
+    }
+
+}
+
+@keyframes openthe_betcard {
+    0% {
+        scale: 0;
+        opacity: 0;
+    }
+
+    100% {
+        scale: 1;
+        opacity: 1;
+    }
+}
+
+
+.input--things {
+    display: flex;
+
+}
+
+.bet-heading {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 3rem;
+}
+
+.bet-note {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+.bet-amount--input {
+    height: 6rem;
+    width: 15rem;
+    font-weight: 900;
+    border: 4px solid #005721;
+    background-color: #149445;
+    color: white;
+    font-size: 3rem;
+    padding: 1rem 1.2rem;
+}
+
+.bet-amount--input:focus {
+    outline: none;
+}
+
+.ok--button {
+    padding: 0px 1.4rem;
+    background-color: #005721;
+    color: #f5f5f5;
+    font-size: 2.4rem;
+
+    display: flex;
+    align-items: center;
+
+    border: 0;
+    border-style: solid;
+
+    cursor: pointer;
+}
+
+.shader {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+    background-color: #252525;
+    z-index: 50;
+    opacity: 0.7;
+
+    /* display: none; */
+}
+
+.bet-here {
+    font-size: 2rem;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.game--wrapper {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game--tittle {
+    display: flex;
+    justify-content: center;
+
+    background-color: #005721;
+    border-radius: 4px;
+}
+
+.game--tittle img {
+    width: auto;
+    height: 100%;
+
+}
+
+.take-away-winnings-el {
+    position: absolute;
+    top: 50%;
+    right: -10%;
+    transform: translate(50%, -50%);
+
+    text-align: center;
+    color: #f5f5f5;
+
+    font-size: 1.6rem;
+    font-weight: 600;
+
+    align-self: center;
+
+    cursor: pointer;
+}
+
+.cash-avbl-value,
+.bet-amount-value,
+.current-winning-cash--value {
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 1px;
+}
+
+
+.winnings--card {
+    position: absolute;
+
+    width: 30rem;
+    height: 20rem;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+
+    z-index: 100;
+    padding: 1.4rem;
+    /* animation: closethe_betcard 0.5s, ofkpenthe_betcard 0.5s; */
+
+    display: none;
+}
+
+.winnings--heading {
+    font-size: 3rem;
+    font-weight: 800;
+    text-transform: capitalize;
+}
+
+.currnt-winning-cash--value {
+    font-size: 3rem;
+}
+
+.restart--button {
+    align-self: center;
+}
+
+.restart-button {
+    height: 3.6rem;
+    cursor: pointer;
+}
+
+.gameover {
+    position: absolute;
+
+    width: 30rem;
+    height: 20rem;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0rem;
+
+    z-index: 100;
+    padding: 1.4rem;
+
+    display: none;
+}
+
+.gameover p {
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+.gameover img {
+    width: 6rem;
+    height: auto;
+    margin-bottom: 3.5rem;
+}
+
+.gameover img:nth-child(3) {
+    position: absolute;
+    top: 100%;
+    transform: translateY(-50%);
+
+    width: 6rem;
+    height: auto;
+}
+
+.winningsCard-restart-button {
+    height: 6rem;
+    position: absolute;
+    transform: translateY(160%);
+    /* animation: blinker_curnt_winnings 1s forwards; */
+}
+
+@keyframes blinker_curnt_winnings {
+    0% {
+        background-color: #ea6729;
+    }
+
+    100% {
+        background-color: #005721;
+    }
+}
+
+@keyframes blinker {
+    0% {
+        background-color: #ea6729;
+    }
+
+    20% {
+        background-color: #ea6729;
+    }
+
+    40% {
+        background-color: #005721;
+    }
+
+    55% {
+        background-color: #ea6729;
+    }
+
+    70% {
+        background-color: #ea6729;
+    }
+
+    100% {
+        background-color: #005721;
+    }
+}
+
+@keyframes nocash_Blinker {
+    50% {
+        background-color: #c92a2a;
+    }
+}
+
+
+
+/* instructions */
+
+
+.instructions {
+    position: absolute;
+
+    width: 40rem;
+    height: 50rem;
+    border-radius: 4px;
+    background-color: #252525;
+    color: #f5f5f5;
+
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* gap: 2rem; */
+
+    z-index: 100;
+    padding: 1.4rem 1.4rem 1.4rem 2rem;
+    /* animation: closethe_betcard 0.5s, ofkpenthe_betcard 0.5s; */
+
+    /* display: none; */
+    overflow-y: scroll;
+
+}
+
+.instructions .heading {
+    font-size: 3rem;
+    font-weight: 800;
+    text-align: center;
+
+    margin-bottom: 2rem;
+
+}
+
+.instructions p {
+    font-size: 1.4rem;
+    font-weight: 500;
+
+    margin-bottom: 1rem;
+}
+
+.instructions h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+    margin-top: 3rem;
+}
+
+.instructions p:nth-child(2) {
+    margin-bottom: 2.5rem;
+}
+
+.gamedetail_things {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    row-gap: 0.5rem;
+
+    margin-bottom: 4rem;
+
+}
+
+.gamedetail_things .gameind {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.img1,
+.img2,
+.img3 {
+    width: calc(80%);
+}
+
+.img3 {
+    height: 41px;
+    width: 76px;
+}
+
+#woodenPlates_img {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+
+#levelsdoublings {
+    list-style: none;
+    /* text-align: center; */
+    padding-left: 2rem;
+}
+
+#levelsdoublings li {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.yellow {
+    color: #ffff00;
+}
