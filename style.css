@@ -504,7 +504,7 @@ html {
     padding: 1.4rem 1.4rem 1.4rem 2rem;
     /* animation: closethe_betcard 0.5s, ofkpenthe_betcard 0.5s; */
 
-    /* display: none; */
+    display: none;
     overflow-y: scroll;
 
 }
