@@ -184,7 +184,7 @@ function activeLayer_index() {
 function ranNumm() {
     let ranNum = [];
     while (ranNum.length < 3) {
-        var r = Math.floor(Math.random() * 5) + 1;
+        var r = Math.floor(Math.random() * 5);
         if (ranNum.indexOf(r) === -1) ranNum.push(r);
     }
 
@@ -262,8 +262,6 @@ function set_bananasBombs() {
             });
         }
     });
-
-
 }
 
 
@@ -340,8 +338,11 @@ winnings_restartButton.addEventListener("keypress", function (event) {
 function winningCard() {
     if (take_winnings_permission) {
 
+        // cash_available = cash_available;
         cash_available = cash_available + current_winnings;
+        console.log(cash_available);
         cashAvbl_el.textContent = cash_available;
+        console.log(cash_available);
         current_winnings_el.textContent = current_winnings;
         wincard_winnings.textContent = current_winnings;
         bet_amount_El.textContent = betAmount;
@@ -349,15 +350,10 @@ function winningCard() {
         shader.style.display = 'block';
         winnings_card_el.style.animation = 'openthe_betcard 0.3s forwards';
         winnings_card_el.style.display = 'flex';
+
+        console.log(cash_available);
     }
 }
-
-// click take winnings red cicle button
-take_winningsButton.addEventListener('click', function () {
-    if (take_winnings_permission) {
-        winningCard();
-    }
-})
 
 take_winningsButton.addEventListener('click', winningCard)
 
@@ -373,9 +369,6 @@ okButton.addEventListener('click', function () {
         cash_available = cash_available - betAmount;
         cashAvbl_el.textContent = cash_available;
         current_winnings_el.textContent = current_winnings;
-        current_winnings_el.textContent = current_winnings;
-
-
 
         shader.style.display = 'none';
 
@@ -405,3 +398,29 @@ okButton.addEventListener('click', function () {
     }
 
 });
+
+
+
+const instructions = document.querySelector('.instructions');
+const instrc_buttons = document.querySelector('.instrucc_buttons');
+const iButton = document.querySelector('.ibutton');
+const xButton = document.querySelector('.xbutton');
+
+instrc_buttons.innerHTML = '';
+instrc_buttons.insertAdjacentHTML('beforeend', `<p class="instbutton ibutton">ℹ</p>`)
+
+instrc_buttons.addEventListener('click', function () {
+    // if button is "i"
+    if (this.lastChild.matches('.ibutton')) {
+        instructions.style.display = 'block';
+        shader.style.display = 'block';
+        instrc_buttons.innerHTML = '';
+        instrc_buttons.insertAdjacentHTML('beforeend', `<p class="instbutton xbutton">❌</p>`)
+    }
+    else {
+        instructions.style.display = 'none';
+        shader.style.display = 'none';
+        instrc_buttons.innerHTML = '';
+        instrc_buttons.insertAdjacentHTML('beforeend', `<p class="instbutton ibutton">ℹ</p>`);
+    }
+})
